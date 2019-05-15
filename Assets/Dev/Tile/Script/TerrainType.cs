@@ -1,13 +1,11 @@
 ﻿using System;
 
-namespace Maps
-{
+namespace Maps {
     /// <summary>
     /// 地形类型
     /// </summary>
     [Serializable]
-    public enum TerrainType : byte
-    {
+    public enum TerrainType : byte {
         /// <summary>
         /// 平地
         /// </summary>
