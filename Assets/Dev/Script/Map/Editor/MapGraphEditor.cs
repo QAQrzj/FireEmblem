@@ -29,6 +29,14 @@ namespace Maps {
                 fix.height = Mathf.Max(Map.mapRect.height, 2);
                 Map.mapRect = fix;
             }
+
+            if (GUILayout.Button("Update MapObject SortingLayer")) {
+                UpdateMapObjectSortingLayer();
+            }
+
+            if (GUILayout.Button("Clear MapObject")) {
+                ClearMapObjects();
+            }
         }
 
         protected virtual void OnSceneGUI() {
@@ -72,6 +80,56 @@ namespace Maps {
                 EditorGUILayout.LabelField(value, style, GUILayout.MaxWidth(valueMaxWidth));
             }
             EditorGUILayout.EndHorizontal();
+        }
+
+        /// <summary>
+        /// 更新地图对象的 sortingLayer
+        /// </summary>
+        private void UpdateMapObjectSortingLayer() {
+            if (Map.MapObjectPool == null) {
+                Debug.LogError("MapGraph -> MapObject Pool is null.");
+                return;
+            }
+
+            MapObject[] mapObjects = Map.MapObjectPool.gameObject.GetComponentsInChildren<MapObject>(true);
+
+            if (mapObjects != null) {
+                foreach (MapObject mapObject in mapObjects) {
+                    // 我们的地图对象不应包含 Cursor 相关的物体
+                    if (mapObject.MapObjectType == MapObjectType.MouseCursor || mapObject.MapObjectType == MapObjectType.Cursor) {
+                        continue;
+                    }
+
+                    if (mapObject.Renderer != null) {
+                        // 更新坐标
+                        Vector3 world = mapObject.transform.position;
+                        Vector3Int cellPosition = Map.Grid.WorldToCell(world);
+                        mapObject.Renderer.sortingOrder = MapObject.CalcSortingOrder(Map, cellPosition);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除 MapObjects
+        /// </summary>
+        private void ClearMapObjects() {
+            if (Map.MapObjectPool == null) {
+                return;
+            }
+
+            MapObject[] mapObjects = Map.MapObjectPool.gameObject.GetComponentsInChildren<MapObject>(true);
+
+            if (mapObjects != null) {
+                foreach (MapObject mapObject in mapObjects) {
+                    // 我们的地图对象不应包含 Cursor 相关的物体
+                    if (mapObject.MapObjectType == MapObjectType.MouseCursor || mapObject.MapObjectType == MapObjectType.Cursor) {
+                        continue;
+                    }
+
+                    Undo.DestroyObjectImmediate(mapObject.gameObject);
+                }
+            }
         }
     }
 }

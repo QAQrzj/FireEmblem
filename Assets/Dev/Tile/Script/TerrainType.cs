@@ -20,5 +20,10 @@ namespace Maps {
         /// 墙壁
         /// </summary>
         Wall,
+
+        /// <summary>
+        /// 长度
+        /// </summary>
+        Length
     }
 }

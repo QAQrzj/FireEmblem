@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Utility {
     public static class TypeExtension {
-        public static int ToInteger(Enum value) {
+        public static int ToInteger(this Enum value) {
             return Convert.ToInt32(value);
         }
 
-        public static AnimationClip FindClip(Animator animator, string clipName) {
+        public static AnimationClip FindClip(this Animator animator, string clipName) {
             if (animator == null || string.IsNullOrEmpty(clipName)) {
                 return null;
             }
@@ -24,7 +24,7 @@ namespace Utility {
             return Array.Find<AnimationClip>(clips, clip => clip != null && clip.name == clipName);
         }
 
-        public static float GetClipLength(Animator animator, string clipName) {
+        public static float GetClipLength(this Animator animator, string clipName) {
             AnimationClip clip = FindClip(animator, clipName);
             if (clip == null) {
                 return 0;

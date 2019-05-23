@@ -56,6 +56,9 @@ TagManager:
   - name: MapObject
     uniqueID: 1354353493
     locked: 0
+  - name: MapCursor
+    uniqueID: 4283357915
+    locked: 0
   - name: MapObjectForeground
     uniqueID: 4166329339
     locked: 0
