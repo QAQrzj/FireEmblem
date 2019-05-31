@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9846d69bdfcbe450db4cb2b8a7ecf30f, type: 3}
+  m_Name: EditorSRPGData
+  m_EditorClassIdentifier: 
+  currentConfig: 4
+  moveConsumptionConfig:
+    datas:
+    - classType: 0
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 1
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 2
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 3
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 4
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 5
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 6
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 7
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 8
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 9
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 10
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 11
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 12
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 13
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 14
+      consumptions:
+      - 0
+      - 0
+      - 0
+    - classType: 15
+      consumptions:
+      - 0
+      - 0
+      - 0
+  classConfig:
+    datas: []
+  characterInfoConfig:
+    datas: []
+  itemInfoConfig:
+    datas:
+    - id: 0
+      name: "\u94C1\u5251"
+      icon: w_sword_001
+      price: 500
+      itemType: 1
+      editorUniqueInfo:
+        weaponUniqueInfo:
+          hp: 0
+          fightProperties:
+            str: 0
+            mag: 0
+            skl: 0
+            spd: 0
+            def: 0
+            mdf: 0
+          luk: 0
+          movePoint: 0
+          weaponType: 0
+          level: 3
+          attack: 4
+          minRange: 1
+          maxRange: 1
+          weight: 6
+          durability: 50
+        ornamentUniqueInfo:
+          hp: 0
+          fightProperties:
+            str: 0
+            mag: 0
+            skl: 0
+            spd: 0
+            def: 0
+            mdf: 0
+          luk: 0
+          movePoint: 0
+        consumableUniqueInfo:
+          stackingNumber: 0
+          amountUsed: 0
+          usingEffectId: 0
+  textInfoConfig:
+    datas:
+    - id: 0
+      text: Test

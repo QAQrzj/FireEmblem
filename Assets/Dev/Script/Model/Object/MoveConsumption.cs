@@ -20,7 +20,7 @@ namespace Models {
         public MoveConsumption(ClassType classType) {
             // TODO Load from config file
             moveConsumptionInfo = new MoveConsumptionInfo {
-                type = classType,
+                classType = classType,
                 consumptions = new float[TerrainType.Length.ToInteger()]
             };
             for (int i = 0; i < moveConsumptionInfo.consumptions.Length; i++) {
