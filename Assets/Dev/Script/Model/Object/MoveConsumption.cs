@@ -5,29 +5,24 @@ namespace Models {
     using Maps;
 
     public class MoveConsumption {
-        private readonly MoveConsumptionInfo moveConsumptionInfo;
+        private MoveConsumptionInfo info;
+
+        public ClassType ClassType {
+            get { return info.classType; }
+        }
 
         public float this[TerrainType terrainType] {
             get {
                 if (terrainType == TerrainType.Length) {
                     Debug.LogError("MoveConsumption -> TerrainType can not be Length.");
-                    return 0;
+                    return 255f;
                 }
-                return moveConsumptionInfo.consumptions[terrainType.ToInteger()];
+                return info.consumptions[terrainType.ToInteger()];
             }
         }
 
-        public MoveConsumption(ClassType classType) {
-            // TODO Load from config file
-            moveConsumptionInfo = new MoveConsumptionInfo {
-                classType = classType,
-                consumptions = new float[TerrainType.Length.ToInteger()]
-            };
-            for (int i = 0; i < moveConsumptionInfo.consumptions.Length; i++) {
-                moveConsumptionInfo.consumptions[i] = UnityEngine.Random.Range(0.5f, 3f);
-            }
+        public MoveConsumption(MoveConsumptionInfo info) {
+            this.info = info;
         }
-
-        // TODO Other
     }
 }

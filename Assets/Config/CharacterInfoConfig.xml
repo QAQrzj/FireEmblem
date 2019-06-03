@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CharacterInfoConfig>
+  <datas>
+    <CharacterInfo id="0" name="罗伊" profile="" classId="0" level="1" hp="20" luk="6">
+      <fightProperties str="5" mag="0" skl="5" spd="5" def="5" mdf="5" />
+    </CharacterInfo>
+  </datas>
+</CharacterInfoConfig>

@@ -55,22 +55,6 @@ namespace Models {
             return id;
         }
 
-        public void OnBeforeSerialize() {
-#if UNITY_EDITOR
-            if (editorUniqueInfo != null) {
-                editorUniqueInfo[itemType] = uniqueInfo;
-            }
-#endif
-        }
-
-        public void OnAfterDeserialize() {
-#if UNITY_EDITOR
-            if (editorUniqueInfo != null) {
-                uniqueInfo = editorUniqueInfo[itemType];
-#endif
-            }
-        }
-
 #if UNITY_EDITOR
         [Serializable]
         public class EditorUniqueInfoCollection {
@@ -97,6 +81,10 @@ namespace Models {
 
                     Type type = value.GetType();
 
+                    if (type == typeof(UniqueInfo)) {
+                        return;
+                    }
+
                     if (type == typeof(WeaponUniqueInfo)) {
                         weaponUniqueInfo = value as WeaponUniqueInfo;
                     } else if (type == typeof(OrnamentUniqueInfo)) {
@@ -110,5 +98,21 @@ namespace Models {
         [SerializeField, XmlIgnore]
         private EditorUniqueInfoCollection editorUniqueInfo;
 #endif
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize() {
+#if UNITY_EDITOR
+            if (editorUniqueInfo != null) {
+                editorUniqueInfo[itemType] = uniqueInfo;
+            }
+#endif
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize() {
+#if UNITY_EDITOR
+            if (editorUniqueInfo != null) {
+                uniqueInfo = editorUniqueInfo[itemType];
+            }
+#endif
+        }
     }
 }

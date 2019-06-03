@@ -1,10 +1,21 @@
 ﻿using System;
 using System.Xml.Serialization;
 using Dev;
+using UnityEngine;
 
 namespace Models {
+    /// <summary>
+    /// 战斗属性
+    /// hp, mp, str, mag, skl, spd, def, mdf
+    /// </summary>
     [Serializable]
     public struct FightProperties {
+        /// <summary>
+        /// 生命值
+        /// </summary>
+        [XmlAttribute]
+        public int hp;
+
         /// <summary>
         /// 力量
         /// </summary>
@@ -45,6 +56,8 @@ namespace Models {
         public int this[FightPropertyType type] {
             get {
                 switch (type) {
+                    case FightPropertyType.HP:
+                        return hp;
                     case FightPropertyType.STR:
                         return str;
                     case FightPropertyType.MAG:
@@ -61,16 +74,112 @@ namespace Models {
                         return 0;
                 }
             }
+            //set
+            //{
+            //    switch (type)
+            //    {
+            //        case FightPropertyType.STR:
+            //            str = value;
+            //            break;
+            //        case FightPropertyType.MAG:
+            //            mag = value;
+            //            break;
+            //        case FightPropertyType.SKL:
+            //            skl = value;
+            //            break;
+            //        case FightPropertyType.SPD:
+            //            spd = value;
+            //            break;
+            //        case FightPropertyType.DEF:
+            //            def = value;
+            //            break;
+            //        case FightPropertyType.MDF:
+            //            mdf = value;
+            //            break;
+            //        default:
+            //            throw new IndexOutOfRangeException("Not Supported");
+            //    }
+            //}
         }
 
         public static FightProperties operator +(FightProperties lhs, FightProperties rhs) {
             FightProperties fight = new FightProperties {
+                hp = lhs.hp + rhs.hp,
                 str = lhs.str + rhs.str,
                 mag = lhs.mag + rhs.mag,
                 skl = lhs.skl + rhs.skl,
                 spd = lhs.spd + rhs.spd,
                 def = lhs.def + rhs.def,
-                mdf = lhs.mdf + rhs.mdf
+                mdf = lhs.mdf + rhs.mdf,
+            };
+            return fight;
+        }
+
+        public static FightProperties operator +(FightProperties lhs, int rhs) {
+            FightProperties fight = new FightProperties {
+                hp = lhs.hp + rhs,
+                str = lhs.str + rhs,
+                mag = lhs.mag + rhs,
+                skl = lhs.skl + rhs,
+                spd = lhs.spd + rhs,
+                def = lhs.def + rhs,
+                mdf = lhs.mdf + rhs,
+            };
+            return fight;
+        }
+
+        public static FightProperties operator *(FightProperties lhs, FightProperties rhs) {
+            FightProperties fight = new FightProperties {
+                hp = lhs.hp * rhs.hp,
+                str = lhs.str * rhs.str,
+                mag = lhs.mag * rhs.mag,
+                skl = lhs.skl * rhs.skl,
+                spd = lhs.spd * rhs.spd,
+                def = lhs.def * rhs.def,
+                mdf = lhs.mdf * rhs.mdf,
+            };
+            return fight;
+        }
+
+        public static FightProperties operator *(FightProperties lhs, int rhs) {
+            FightProperties fight = new FightProperties {
+                hp = lhs.hp * rhs,
+                str = lhs.str * rhs,
+                mag = lhs.mag * rhs,
+                skl = lhs.skl * rhs,
+                spd = lhs.spd * rhs,
+                def = lhs.def * rhs,
+                mdf = lhs.mdf * rhs,
+            };
+            return fight;
+        }
+
+        public static FightProperties operator /(FightProperties lhs, int rhs) {
+            if (rhs == 0) {
+                return lhs;
+            }
+
+            FightProperties fight = new FightProperties {
+                hp = lhs.hp / rhs,
+                str = lhs.str / rhs,
+                mag = lhs.mag / rhs,
+                skl = lhs.skl / rhs,
+                spd = lhs.spd / rhs,
+                def = lhs.def / rhs,
+                mdf = lhs.mdf / rhs,
+            };
+            return fight;
+        }
+
+        public static FightProperties Clamp(FightProperties value, FightProperties max) {
+            FightProperties fight = new FightProperties {
+                hp = Mathf.Clamp(value.hp, 1, SettingVars.MaxHp),
+                str = Mathf.Clamp(value.str, 0, max.str),
+                mag = Mathf.Clamp(value.mag, 0, max.mag),
+                skl = Mathf.Clamp(value.skl, 0, max.skl),
+                spd = Mathf.Clamp(value.spd, 0, max.spd),
+                def = Mathf.Clamp(value.def, 0, max.def),
+                mdf = Mathf.Clamp(value.mdf, 0, max.mdf)
             };
             return fight;
         }

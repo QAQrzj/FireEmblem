@@ -36,6 +36,12 @@ namespace Models {
         public int maxRange;
 
         /// <summary>
+        /// 命中率
+        /// </summary>
+        [XmlAttribute]
+        public int hit;
+
+        /// <summary>
         /// 重量
         /// </summary>
         [XmlAttribute]

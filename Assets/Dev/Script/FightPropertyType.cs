@@ -4,34 +4,39 @@ namespace Dev {
     [Serializable]
     public enum FightPropertyType {
         /// <summary>
+        /// 生命值
+        /// </summary>
+        HP = 0,
+
+        /// <summary>
         /// 力量
         /// </summary>
-        STR = 0,
+        STR,
 
         /// <summary>
         /// 魔力
         /// </summary>
-        MAG = 1,
+        MAG,
 
         /// <summary>
         /// 技巧
         /// </summary>
-        SKL = 2,
+        SKL,
 
         /// <summary>
         /// 速度
         /// </summary>
-        SPD = 3,
+        SPD,
 
         /// <summary>
         /// 防御
         /// </summary>
-        DEF = 4,
+        DEF,
 
         /// <summary>
         /// 魔防
         /// </summary>
-        MDF = 5,
+        MDF,
 
         /// <summary>
         /// 长度

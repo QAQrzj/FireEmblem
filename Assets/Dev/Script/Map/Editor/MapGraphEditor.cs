@@ -23,11 +23,11 @@ namespace Maps {
             DrawDefaultInspector();
 
             // 检测地图长宽是否正确, 如果不正确就修正
-            if (Map.mapRect.width < 2 || Map.mapRect.height < 2) {
-                RectInt fix = Map.mapRect;
-                fix.width = Mathf.Max(Map.mapRect.width, 2);
-                fix.height = Mathf.Max(Map.mapRect.height, 2);
-                Map.mapRect = fix;
+            if (Map.MapRect.width < 2 || Map.MapRect.height < 2) {
+                RectInt fix = Map.MapRect;
+                fix.width = Mathf.Max(Map.MapRect.width, 2);
+                fix.height = Mathf.Max(Map.MapRect.height, 2);
+                Map.MapRect = fix;
             }
 
             if (GUILayout.Button("Update MapObject SortingLayer")) {
@@ -52,7 +52,7 @@ namespace Maps {
             Rect areaRect = new Rect(50, 50, 200, 200);
             GUILayout.BeginArea(areaRect);
             DrawHorizontalLabel("Object Name:", Map.gameObject.name, textStyle);
-            DrawHorizontalLabel("Map Name:", Map.mapName, textStyle);
+            DrawHorizontalLabel("Map Name:", Map.MapName, textStyle);
             DrawHorizontalLabel("Map Size:", Map.Width + "x" + Map.Height, textStyle);
             DrawHorizontalLabel("Cell Size:", Map.Grid.cellSize.x + "x" + Map.Grid.cellSize.y, textStyle);
             GUILayout.EndArea();
