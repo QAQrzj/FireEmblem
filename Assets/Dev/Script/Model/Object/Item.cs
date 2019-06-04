@@ -1,5 +1,5 @@
-﻿using System;
-using Dev;
+﻿using Dev;
+using System;
 
 namespace Models {
     public abstract class Item : IDisposable {
@@ -42,7 +42,10 @@ namespace Models {
 
         public int ItemId => Self.itemId;
 
-        public int Durability => Self.durability;
+        public int Durability {
+            get => Self.durability;
+            set => Self.durability = value;
+        }
 
         public bool IsBroken => Self.durability <= 0;
 

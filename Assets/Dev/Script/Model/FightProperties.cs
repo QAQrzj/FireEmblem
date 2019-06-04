@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Dev;
+using System;
 using System.Xml.Serialization;
-using Dev;
 using UnityEngine;
 
 namespace Models {
@@ -74,32 +74,30 @@ namespace Models {
                         return 0;
                 }
             }
-            //set
-            //{
-            //    switch (type)
-            //    {
-            //        case FightPropertyType.STR:
-            //            str = value;
-            //            break;
-            //        case FightPropertyType.MAG:
-            //            mag = value;
-            //            break;
-            //        case FightPropertyType.SKL:
-            //            skl = value;
-            //            break;
-            //        case FightPropertyType.SPD:
-            //            spd = value;
-            //            break;
-            //        case FightPropertyType.DEF:
-            //            def = value;
-            //            break;
-            //        case FightPropertyType.MDF:
-            //            mdf = value;
-            //            break;
-            //        default:
-            //            throw new IndexOutOfRangeException("Not Supported");
-            //    }
-            //}
+            set {
+                switch (type) {
+                    case FightPropertyType.STR:
+                        str = value;
+                        break;
+                    case FightPropertyType.MAG:
+                        mag = value;
+                        break;
+                    case FightPropertyType.SKL:
+                        skl = value;
+                        break;
+                    case FightPropertyType.SPD:
+                        spd = value;
+                        break;
+                    case FightPropertyType.DEF:
+                        def = value;
+                        break;
+                    case FightPropertyType.MDF:
+                        mdf = value;
+                        break;
+                    default:
+                        throw new IndexOutOfRangeException("Not Supported");
+                }
+            }
         }
 
         public static FightProperties operator +(FightProperties lhs, FightProperties rhs) {

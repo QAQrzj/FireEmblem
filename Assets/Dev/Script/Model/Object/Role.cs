@@ -58,10 +58,10 @@ namespace Models {
 
         public float MovePoint => Self.movePoint;
 
-        public bool Holding {
-            get { return Self.holding; }
-            set { Self.holding = value; }
-        }
+        //public bool Holding {
+        //    get { return Self.holding; }
+        //    set { Self.holding = value; }
+        //}
 
         public virtual Weapon EquipedWeapon => equipedWeapon;
 
@@ -233,7 +233,7 @@ namespace Models {
             if (index != -1) {
                 items[index] = item;
 
-                // 如果是武器，判断装备的武器是否为null
+                // 如果是武器, 判断装备的武器是否为 null
                 if (item.ItemType == ItemType.Weapon && equipedWeapon == null) {
                     equipedWeapon = item as Weapon;
                 }
@@ -277,8 +277,7 @@ namespace Models {
         /// <param name="index2"></param>
         /// <returns></returns>
         public bool SwapItem(int index1, int index2) {
-            if (index1 < 0 || index1 >= SettingVars.roleItemCount
-                || index2 < 0 || index2 >= SettingVars.roleItemCount) {
+            if (index1 < 0 || index1 >= SettingVars.roleItemCount || index2 < 0 || index2 >= SettingVars.roleItemCount) {
                 return false;
             }
 
@@ -302,7 +301,7 @@ namespace Models {
 
             int value = 0;
 
-            // 如果装备武器不为null，则叠加武器属性
+            // 如果装备武器不为 null, 则叠加武器属性
             if (equipedWeapon != null) {
                 value += equipedWeapon.UniqueInfo.fightProperties[type];
             }
@@ -324,7 +323,7 @@ namespace Models {
         public int GetItemLukSum() {
             int value = 0;
 
-            // 如果装备武器不为null，则叠加武器幸运
+            // 如果装备武器不为 null, 则叠加武器幸运
             if (equipedWeapon != null) {
                 value += equipedWeapon.UniqueInfo.luk;
             }
@@ -367,15 +366,11 @@ namespace Models {
     }
 
     public class UniqueRole : Role {
-        public sealed override RoleType RoleType {
-            get { return RoleType.Unique; }
-        }
+        public sealed override RoleType RoleType => RoleType.Unique;
     }
 
     public class FollowingRole : Role {
-        public sealed override RoleType RoleType {
-            get { return RoleType.Following; }
-        }
+        public sealed override RoleType RoleType => RoleType.Following;
 
         public FollowingRole(ulong guid) : base(guid) {
 
