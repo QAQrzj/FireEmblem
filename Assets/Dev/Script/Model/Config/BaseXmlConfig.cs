@@ -63,7 +63,7 @@ namespace Models {
         }
 
         /// <summary>
-        /// 获取所有Key
+        /// 获取所有 Key
         /// </summary>
         /// <returns></returns>
         Array IEditorConfigSerializer.EditorGetKeys() {

@@ -24,17 +24,15 @@ namespace CombatManagement {
 
                 ///////////////////
                 // TODO 触发伤害技能
-                // 这里写触发技能后伤害变化(比如武器特效等)
-                // 或者触发某些状态(比如中毒等)
                 //////////////////
 
                 if (crit) {
-                    realAtk *= 2; // 假定暴击造成双倍伤害
+                    realAtk *= 3; // 假定暴击造成三倍伤害
                 }
 
                 // 掉血 = 攻击者攻击力 - 防守者防御力
-                // 最少掉一滴血
-                int damageHp = Mathf.Max(1, realAtk - defer.Def);
+                // 最少不掉血
+                int damageHp = Mathf.Max(0, realAtk - defer.Def);
                 if (damageHp > defVal.hp) {
                     damageHp = defVal.hp;
                 }
@@ -88,8 +86,7 @@ namespace CombatManagement {
                 //CombatUnit atker = GetCombatUnit(atkVal.position);
                 //CombatUnit defer = GetCombatUnit(defVal.position);
 
-                // TODO 是否继续攻击, 必要时需要在 CombatVariable 加入其它控制变量
-                // 比如, 触发过技能或物品了
+                // TODO 是否继续攻击
                 // atker.role.skill/item 包含继续战斗的技能或物品
                 // defer.role.skill/item 包含继续战斗的技能或物品
                 //if (触发继续战斗) {

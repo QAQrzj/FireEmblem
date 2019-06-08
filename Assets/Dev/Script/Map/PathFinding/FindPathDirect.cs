@@ -21,16 +21,6 @@ namespace Maps.FindPath {
         }
 
         public override bool CanAddAdjacentToReachable(PathFinding search, CellData adjacent) {
-            // 没有 Tile
-            //if (!adjacent.HasTile) {
-            //    return false;
-            //}
-
-            // 已经有对象了
-            //if (adjacent.HasMapObject) {
-            //    return false;
-            //}
-
             // 是否可移动
             if (!adjacent.CanMove) {
                 return false;

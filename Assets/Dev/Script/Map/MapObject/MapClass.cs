@@ -137,7 +137,7 @@ namespace Maps {
             Direction direction = GetMovingDirection(current, next);
             AnimatorController.SetMoveDirection(direction);
 
-            // 计算sortingOrder
+            // 计算 sortingOrder
             if (GetComponent<Renderer>() != null) {
                 GetComponent<Renderer>().sortingOrder = CalcSortingOrder(Map, next.Position);
             }

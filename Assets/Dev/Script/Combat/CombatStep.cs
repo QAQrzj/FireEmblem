@@ -5,19 +5,6 @@ namespace CombatManagement {
     /// 战斗每一步结果
     /// </summary>
     public class CombatStep {
-        // 如果你要在 Inspector 面板显示每次战斗结果, 在这里更改
-        // 将属性改成字段, 加上 [SerializeField]
-        // 同时更改 Combat 类 List<CombatStep> 也需要这样改
-        // 在此类和 CombatVariable 上加上 [Serializable]
-        // 也可以自定义 UnityEditor
-        // 例如:
-        //[SerializeField]
-        //private CombatVariable atkVal;
-        //public CombatVariable AtkVal {
-        //    get => atkVal;
-        //    private set => atkVal = value;
-        //}
-
         /// <summary>
         /// 当前进攻方
         /// </summary>

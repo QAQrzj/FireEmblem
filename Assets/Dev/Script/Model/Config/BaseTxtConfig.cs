@@ -65,7 +65,7 @@ namespace Models {
         }
 
         /// <summary>
-        /// 获取所有Key
+        /// 获取所有 Key
         /// </summary>
         /// <returns></returns>
         Array IEditorConfigSerializer.EditorGetKeys() {
@@ -117,7 +117,7 @@ namespace Models {
 
             for (int i = 0; i < lines.Length; i++) {
                 string line = lines[i].Trim();
-                // 如果是注释，直接下一条
+                // 如果是注释, 直接下一条
                 if (line.StartsWith(commentingPrefix, StringComparison.Ordinal)) {
                     continue;
                 }

@@ -5,50 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace CombatManagement {
-    //using DR.Book.SRPG_Dev.Framework;
     using Maps;
-
-    //public class CombatAnimaPlayArgs : MessageArgs {
-    //    public Combat combat;
-    //    public bool inMap;
-    //    public bool end;
-
-    //    protected override void OnDispose() {
-    //        combat = null;
-    //        inMap = false;
-    //        end = false;
-    //    }
-    //}
-
-    //public class CombatAnimaStepArgs : MessageArgs {
-    //    public int index;
-    //    public float wait;
-    //    public bool end;
-
-    //    protected override void OnDispose() {
-    //        index = 0;
-    //        wait = 0f;
-    //        end = false;
-    //    }
-    //}
 
     [DisallowMultipleComponent, RequireComponent(typeof(Combat))]
     [AddComponentMenu("SRPG/Combat System/Combat Anima Controller")]
     public class CombatAnimaController : MonoBehaviour {
-        //#region Enum AnimaStatus
-        //public enum AnimaStatus {
-        //    Ready,
-        //    Running,
-        //    Waiting,
-        //}
-        //#endregion
-
         #region Fields
-        //private readonly CombatAnimaPlayArgs m_AnimaPlayArgs = new CombatAnimaPlayArgs();
-        //private readonly CombatAnimaStepArgs m_AnimaStepArgs = new CombatAnimaStepArgs();
-
-        //private AnimaStatus m_Status = AnimaStatus.Ready;
-
         [SerializeField]
         private float animationInterval = 1f;
 
@@ -181,9 +143,6 @@ namespace CombatManagement {
                 onStepEvent.RemoveAllListeners();
                 onStepEvent = null;
             }
-
-            //m_AnimaPlayArgs.Dispose();
-            //m_AnimaStepArgs.Dispose();
         }
         #endregion
 
@@ -226,24 +185,12 @@ namespace CombatManagement {
             animaCoroutine = StartCoroutine(RunningAnimas(inMap));
         }
 
-        ///// <summary>
-        ///// 继续动画
-        ///// </summary>
-        //public void AnimaConitnue() {
-        //    if (m_Status == AnimaStatus.Waiting) {
-        //        m_Status = AnimaStatus.Running;
-        //    }
-        //}
-
         /// <summary>
         /// 开始运行动画
         /// </summary>
         /// <param name="inMap"></param>
         /// <returns></returns>
         private IEnumerator RunningAnimas(bool inMap) {
-            // 状态设置为运行中
-            //m_Status = AnimaStatus.Running;
-
             OnPlay.Invoke(this, inMap);
 
             if (inMap) {
@@ -256,8 +203,6 @@ namespace CombatManagement {
             OnStop.Invoke(this, inMap);
 
             animaCoroutine = null;
-
-            //m_Status = AnimaStatus.Ready;
         }
 
         private IEnumerator RunningAnimasInMap() {
@@ -275,12 +220,6 @@ namespace CombatManagement {
             CombatStep step;
             while (curIndex < steps.Count) {
                 step = steps[curIndex];
-
-                // 根据动画不同, 播放时间应该是不同的
-                // 这需要一些参数或者算法来控制
-                // 例如一些魔法, 在配置表中加上一个特效的变量
-                // 人物施法动画是这个, 特效还要另算, 需要计算在内
-                // 这里我只是简单的定义为同时播放
 
                 float len0 = RunAniamAndGetLengthInMap(step.AtkVal, step.DefVal, dirs);
                 float len1 = RunAniamAndGetLengthInMap(step.DefVal, step.AtkVal, dirs);
@@ -351,7 +290,7 @@ namespace CombatManagement {
 
                 //break;
                 case CombatAnimaType.Dead:
-                    // TODO 播放死亡动画, 我把死亡忘记了
+                    // TODO 播放死亡动画
                     break;
             }
             return length;

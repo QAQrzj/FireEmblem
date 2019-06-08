@@ -63,8 +63,7 @@ namespace Maps {
         }
 
         /// <summary>
-        /// 立即刷新 Scene 面板, 这保证了每帧都运行(包括 Gizmos)
-        /// 如果在 OnSceneGUI 或 Gizmos 里获取鼠标, 需要每帧都运行
+        /// 立即刷新 Scene 面板
         /// </summary>
         protected void UpdateSceneGUI() {
             HandleUtility.Repaint();
@@ -95,7 +94,6 @@ namespace Maps {
 
             if (mapObjects != null) {
                 foreach (MapObject mapObject in mapObjects) {
-                    // 我们的地图对象不应包含 Cursor 相关的物体
                     if (mapObject.MapObjectType == MapObjectType.MouseCursor || mapObject.MapObjectType == MapObjectType.Cursor) {
                         continue;
                     }
@@ -122,7 +120,6 @@ namespace Maps {
 
             if (mapObjects != null) {
                 foreach (MapObject mapObject in mapObjects) {
-                    // 我们的地图对象不应包含 Cursor 相关的物体
                     if (mapObject.MapObjectType == MapObjectType.MouseCursor || mapObject.MapObjectType == MapObjectType.Cursor) {
                         continue;
                     }

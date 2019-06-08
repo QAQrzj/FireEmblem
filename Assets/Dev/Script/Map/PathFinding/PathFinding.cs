@@ -113,9 +113,6 @@ namespace Maps.FindPath {
 
         /// <summary>
         /// 寻找攻击范围
-        /// 这里添加的参数 useEndCell
-        /// 是在移动范围与攻击范围一起显示时
-        /// 不破坏起始节点
         /// </summary>
         /// <returns><c>true</c>, if attack range was searched, <c>false</c> otherwise.</returns>
         /// <param name="howToFind">How to find.</param>

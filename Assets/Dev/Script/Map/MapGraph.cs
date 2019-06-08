@@ -234,16 +234,6 @@ namespace Maps {
         /// </summary>
         private MapCursor runtimeCursorPrefab;
 
-        ///// <summary>
-        ///// 移动范围光标集合
-        ///// </summary>
-        //private List<MapCursor> m_MapMoveCursors = new List<MapCursor>();
-
-        ///// <summary>
-        ///// 攻击范围光标集合
-        ///// </summary>
-        //private List<MapCursor> m_MapAttackCursors = new List<MapCursor>();
-
         /// <summary>
         /// 光标集合
         /// </summary>
@@ -293,10 +283,6 @@ namespace Maps {
         /// </summary>
         public MapMouseCursor MouseCursor {
             get {
-                // 只有在测试时, 才会都使用默认 prefab 创建
-                // 正式游戏, 这里不会为 null
-                // 将在初始化地图时创建用户光标
-                // 如果游戏无法初始化光标, 则需要检查代码是否正确
                 if (mouseCursor == null) {
                     mouseCursor = CreateMapObject(MouseCursorPrefab) as MapMouseCursor;
                 }
@@ -311,10 +297,6 @@ namespace Maps {
         /// </summary>
         public MapCursor RuntimeCursorPrefab {
             get {
-                // 只有在测试时, 才会都使用默认 prefab
-                // 正式游戏, 这里不会为 null
-                // 将在初始化地图时会加载预制体
-                // 如果游戏无法加载预制体, 则需要检查代码是否正确
                 if (runtimeCursorPrefab == null) {
                     runtimeCursorPrefab = CursorPrefab;
                 }
@@ -553,16 +535,6 @@ namespace Maps {
                         cellData.MapObject = mapObject;
                     }
 
-                    // 如果是 Class
-                    // 可选项(可忽略):
-                    //      请将 Prefab 加入到 mapObjectPool 的 PrePrefabs 中防止动态重复读取 Prefab
-                    //      为 Prefab 添加 RuntimePrePoolObject 组件:
-                    //          如果此 Prefab 也用于动态读取, 一定将组件 enable 设置为 false;
-                    //          将 Prefab Name 设置成对应的 Prefab 名称;
-                    //          删除时会 Despawn 回池子
-                    //      这些不是必须的, 一些需要这样干的情况:
-                    //          绘制此 Prefab 的实例(比如某些杂兵)数量非常多(一般 > 20),
-                    //          且在消灭之后会由于事件触发再次生成大量此 Prefab 的实例
                     if (mapObject.MapObjectType == MapObjectType.Class) {
                         RuntimePrePoolObject runtime = mapObject.GetComponent<RuntimePrePoolObject>();
                         if (runtime != null && !runtime.enabled) {
@@ -706,34 +678,11 @@ namespace Maps {
         }
 
         /// <summary>
-        /// 隐藏cursor
+        /// 隐藏 cursor
         /// </summary>
         public void HideRangeCursors() {
-            //if (m_MapMoveCursors.Count > 0)
-            //{
-            //    for (int i = 0; i < m_MapMoveCursors.Count; i++)
-            //    {
-            //        ObjectPool.DespawnUnsafe(m_MapMoveCursors[i].gameObject, true);
-            //    }
-            //    m_MapMoveCursors.Clear();
-            //}
-
-            //if (m_MapAttackCursors.Count > 0)
-            //{
-            //    for (int i = 0; i < m_MapAttackCursors.Count; i++)
-            //    {
-            //        ObjectPool.DespawnUnsafe(m_MapAttackCursors[i].gameObject, true);
-            //    }
-            //    m_MapAttackCursors.Clear();
-            //}
-
             if (cursors.Count > 0) {
                 foreach (MapCursor cursor in cursors) {
-                    //CellData cellData = GetCellData(cursor.cellPosition);
-                    //if (cellData != null)
-                    //{
-                    //    cellData.hasCursor = false;
-                    //}
                     ObjectPool.DespawnUnsafe(cursor.gameObject, true);
                 }
                 cursors.Clear();

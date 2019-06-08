@@ -18,7 +18,7 @@ namespace Models {
         public Item.OwnerTypeEnum ownerType;
 
         /// <summary>
-        /// 所有者ID
+        /// 所有者 ID
         /// 未知: 可能在虚空中
         /// 角色: 角色id, 哪个角色
         /// 商店: 商店id, 哪个商店

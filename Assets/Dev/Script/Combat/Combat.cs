@@ -191,7 +191,7 @@ namespace CombatManagement {
                 //CombatUnit atker = GetCombatUnit(atkVal.position);
                 //CombatUnit defer = GetCombatUnit(defVal.position);
 
-                // TODO 是否继续攻击, 必要时需要在 CombatVariable 加入其它控制变量
+                // TODO 是否继续攻击
                 // atker.role.skill 包含继续战斗的技能
                 // defer.role.skill 包含继续战斗的技能
                 //if (condition) {
@@ -241,9 +241,6 @@ namespace CombatManagement {
         /// <param name="weaponType"></param>
         /// <returns></returns>
         private BattleActionType GetBattleActionType(WeaponType weaponType) {
-            // TODO 由于没有动画支持, 所以并没有其他武器
-            // 你可以添加其他武器到这里
-
             switch (weaponType) {
                 case WeaponType.Sword:
                     //case WeaponType.Lance:

@@ -8,10 +8,7 @@ namespace Maps.FindPath {
                 return null;
             }
 
-            /// 取得 F 最小的节点(因为我们没有计算 H, 这里就是 G)
-            /// 当你在寻找路径有卡顿时, 请一定使用更好的查找方式
-            /// 例如可以改用二叉树的方式
-            /// 也可将 PathFinding 里面 reachable.Add(adjacent) 的方法改成边排序边加入的方法
+            // 取得 F 最小的节点
             search.reachable.Sort((cell1, cell2) => -cell1.F.CompareTo(cell2.F));
             int index = search.reachable.Count - 1;
             CellData chose = search.reachable[index];
@@ -28,16 +25,6 @@ namespace Maps.FindPath {
         }
 
         public override bool CanAddAdjacentToReachable(PathFinding search, CellData adjacent) {
-            // 没有 Tile
-            //if (!adjacent.HasTile) {
-            //    return false;
-            //}
-
-            // 已经有对象了
-            //if (adjacent.HasMapObject) {
-            //    return false;
-            //}
-
             // 是否可移动
             if (!adjacent.CanMove) {
                 return false;

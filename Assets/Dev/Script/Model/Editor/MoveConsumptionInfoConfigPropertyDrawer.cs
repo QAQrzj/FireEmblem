@@ -45,11 +45,11 @@ namespace Models {
                 for (int i = 0; i < datas.arraySize; i++) {
                     SerializedProperty data = datas.GetArrayElementAtIndex(i);
 
-                    // 强制保持数组顺序为ClassType的Enum顺序
+                    // 强制保持数组顺序为 ClassType 的 Enum 顺序
                     SerializedProperty classType = data.FindPropertyRelative("classType");
                     classType.enumValueIndex = i;
 
-                    // 渲染每一个MoveConsumpotionInfo
+                    // 渲染每一个 MoveConsumpotionInfo
                     rect.height = EditorGUI.GetPropertyHeight(data, true);
                     EditorGUI.PropertyField(rect, data, true);
                     rect.y += rect.height + padding;
