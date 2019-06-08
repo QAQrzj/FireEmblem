@@ -194,6 +194,19 @@ namespace Maps {
         }
         #endregion
 
+        /// <summary>
+        /// 战斗结束
+        /// </summary>
+        /// <param name="hp"></param>
+        /// <param name="durability"></param>
+        public void OnBattleEnd(int hp, int durability) {
+            Role.OnBattleEnd(hp, durability);
+
+            if (Role.IsDead) {
+                // TODO 死亡
+            }
+        }
+
         #region Pool Method
         public override void OnDespawn() {
             base.OnDespawn();

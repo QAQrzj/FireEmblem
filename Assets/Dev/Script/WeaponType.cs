@@ -2,7 +2,9 @@
 
 namespace Weapon {
     [Serializable]
-    public enum WeaponType : int {
+    public enum WeaponType {
+        Unknow = -1,
+
         /// <summary>
         /// 剑
         /// </summary>

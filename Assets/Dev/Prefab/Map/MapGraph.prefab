@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: 1629969030656687725}
   - component: {fileID: 1629969030656687724}
   - component: {fileID: 7429822738630254469}
+  - component: {fileID: 8506189229565801231}
+  - component: {fileID: 318467398716408523}
   m_Layer: 0
   m_Name: MapGraph
   m_TagString: Untagged
@@ -185,7 +187,7 @@ MonoBehaviour:
     y: 0
     width: 24
     height: 24
-  TerrainTilemap: {fileID: 1629969030864311171}
+  terrainTilemap: {fileID: 0}
   mapObjectPool: {fileID: 4821852787641806193}
   mapCursorPool: {fileID: 5448402406644359840}
   mouseCursorPrefab: {fileID: 3018595994977705986, guid: cdc6b7707e0064f0fb79bd87d059de38,
@@ -195,6 +197,47 @@ MonoBehaviour:
   findAttackRange: {fileID: 11400000, guid: 23df3da215cdc4aa4961cde65d2992e1, type: 2}
   findMoveRange: {fileID: 11400000, guid: 54464ef88de824ef5b58b02f654daee3, type: 2}
   findPathDirect: {fileID: 11400000, guid: c3b6afde1d83a4f65a21b46c2755e33a, type: 2}
+--- !u!114 &8506189229565801231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629969030656687723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfd4df192e9c46ecb2c0c9931068ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleActions: []
+--- !u!114 &318467398716408523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629969030656687723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5960ff4940e47749e9b70d3ccc15a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationInterval: 1
+  onPlayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CombatManagement.CombatAnimaController+OnAnimaPlayEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  onStopEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CombatManagement.CombatAnimaController+OnAnimaPlayEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  onStepEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CombatManagement.CombatAnimaController+OnAnimaStepEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1629969030864311168
 GameObject:
   m_ObjectHideFlags: 0

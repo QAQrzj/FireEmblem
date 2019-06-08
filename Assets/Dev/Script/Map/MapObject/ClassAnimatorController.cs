@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using Weapon;
 using Utility;
+using Weapon;
 
 namespace Maps {
     [RequireComponent(typeof(Animator))]
@@ -29,8 +29,8 @@ namespace Maps {
         #endregion
 
         #region Clip Length Method
-        public float GetAttackAnimationLength(Direction direction, WeaponType weapon, bool crit) {
-            string clipName = GetAttackAnimationName(direction, weapon, crit);
+        public float GetAttackAnimationLength(Direction direction, WeaponType weapon) {
+            string clipName = GetAttackAnimationName(direction, weapon);
             return Animator.GetClipLength(clipName);
         }
         #endregion
@@ -40,6 +40,7 @@ namespace Maps {
             if (Animator.GetBool("PrepareAttack")) {
                 return;
             }
+
             Animator.SetInteger("Direction", direction.ToInteger());
         }
 
@@ -55,13 +56,12 @@ namespace Maps {
             }
         }
 
-        public void PlayPrepareAttack(Direction direction, WeaponType weapon, bool crit) {
+        public void PlayPrepareAttack(Direction direction, WeaponType weapon) {
             StopMove();
 
             if (!Animator.GetBool("PrepareAttack")) {
                 Animator.SetInteger("Direction", direction.ToInteger());
                 Animator.SetInteger("Weapon", weapon.ToInteger());
-                Animator.SetBool("Crit", crit);
                 Animator.SetBool("PrepareAttack", true);
             }
         }
@@ -84,7 +84,7 @@ namespace Maps {
         }
 
         public void PlayEvade() {
-            if (!Animator.GetBool("PrepareEvade")) {
+            if (!Animator.GetBool("PrepareAttack")) {
                 return;
             }
 
@@ -92,7 +92,7 @@ namespace Maps {
         }
 
         public void PlayDamage() {
-            if (!Animator.GetBool("PrepareDamage")) {
+            if (!Animator.GetBool("PrepareAttack")) {
                 return;
             }
 
@@ -105,8 +105,8 @@ namespace Maps {
             return "Move" + direction.ToString();
         }
 
-        public static string GetAttackAnimationName(Direction direction, WeaponType weapon, bool crit) {
-            return weapon.ToString() + direction.ToString() + (crit ? "Crit" : "");
+        public static string GetAttackAnimationName(Direction direction, WeaponType weapon) {
+            return weapon.ToString() + direction.ToString();
         }
 
         public static string GetEvadeAnimationName(Direction direction) {
